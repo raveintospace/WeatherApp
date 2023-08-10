@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = WeatherViewModel()
+    @State private var location = ""
     
     var body: some View {
         ZStack {
@@ -63,10 +64,28 @@ struct ContentView: View {
                 Divider()
                     .foregroundColor(.white)
                     .padding()
+                VStack {
+                    Label(viewModel.weatherModelForView.humidity, systemImage: "humidity.fill")
+                        .modifier(CustomModifier())
+                    
+                    Divider()
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                    TextField("Enter location", text: $location)
+                        .frame(height: 100)
+                        .background(Color.white)
+                        .padding(.horizontal, 50)
+                        .onSubmit {
+                            Task {
+                                await viewModel.getWeather(city: location)
+                            }
+                        }
+                    Text("City: \(location)")
+                    
+                    Spacer()
+                }
                 
-                Label(viewModel.weatherModelForView.humidity, systemImage: "humidity.fill")
-                    .modifier(CustomModifier())
-                Spacer()
             }
             .padding(.top, 20)
         }
