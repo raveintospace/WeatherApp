@@ -8,23 +8,21 @@
 import Foundation
 
 final class WeatherViewModel: ObservableObject {
-    @Published var weatherModelForView: WeatherModelForView = .empty
+    @Published var weatherModelForView: WeatherModelForView
     private let weatherModelMapper: WeatherModelMapper = WeatherModelMapper()
+    private let repository: RemoteDataSource
     
+    init(weatherModelForView: WeatherModelForView = .empty, repository: RemoteDataSource = RemoteDataSource()) {
+        self.weatherModelForView = weatherModelForView
+        self.repository = repository
+    }
+
     func getWeather(city: String) async {
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=a0f83ddbf9fa0d41abe53f5ea148d5fe&units=metric&lang=es")!
-        
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let dataModel = try JSONDecoder().decode(WeatherResponseDataModel.self, from: data)
-            
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: dataModel)
-            }
-            debugPrint(dataModel)
-            
-        } catch {
+            let receivedWeather = try await repository.fetchWeather(city: city)
+            self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather)
+        }
+        catch {
             print(error)
         }
     }

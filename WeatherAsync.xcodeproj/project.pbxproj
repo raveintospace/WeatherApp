@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		340B0D362A85220B00BE4DDD /* WeatherModelForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B0D352A85220B00BE4DDD /* WeatherModelForView.swift */; };
 		340B0D382A85238100BE4DDD /* WeatherModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */; };
+		340B0D3C2A8531B700BE4DDD /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */; };
 		340EDDA92A851D0E00C21210 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340EDDA82A851D0E00C21210 /* CustomModifier.swift */; };
 		3499DEAD2A83E61800116400 /* WeatherAsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3499DEAC2A83E61800116400 /* WeatherAsyncApp.swift */; };
 		3499DEAF2A83E61800116400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3499DEAE2A83E61800116400 /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		340B0D352A85220B00BE4DDD /* WeatherModelForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelForView.swift; sourceTree = "<group>"; };
 		340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelMapper.swift; sourceTree = "<group>"; };
+		340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		340EDDA82A851D0E00C21210 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 		3499DEA92A83E61800116400 /* WeatherAsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3499DEAC2A83E61800116400 /* WeatherAsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAsyncApp.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			children = (
 				340EDDA82A851D0E00C21210 /* CustomModifier.swift */,
 				340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */,
+				340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340B0D3C2A8531B700BE4DDD /* RemoteDataSource.swift in Sources */,
 				3499DEAF2A83E61800116400 /* ContentView.swift in Sources */,
 				340EDDA92A851D0E00C21210 /* CustomModifier.swift in Sources */,
 				340B0D382A85238100BE4DDD /* WeatherModelMapper.swift in Sources */,
