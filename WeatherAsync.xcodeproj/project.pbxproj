@@ -45,6 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340B0D3D2A853BD300BE4DDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3499DEBD2A83EB3800116400 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		340B0D3E2A853BDB00BE4DDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3499DEAE2A83E61800116400 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		340EDDAA2A851D1600C21210 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +93,8 @@
 				3499DEBF2A83EDCC00116400 /* Info.plist */,
 				3499DEAC2A83E61800116400 /* WeatherAsyncApp.swift */,
 				3499DEBC2A83EB0500116400 /* Model */,
-				3499DEAE2A83E61800116400 /* ContentView.swift */,
-				3499DEBD2A83EB3800116400 /* WeatherViewModel.swift */,
+				340B0D3E2A853BDB00BE4DDD /* View */,
+				340B0D3D2A853BD300BE4DDD /* ViewModel */,
 				340EDDAA2A851D1600C21210 /* Utils */,
 				3499DEB02A83E61B00116400 /* Assets.xcassets */,
 				3499DEB22A83E61B00116400 /* Preview Content */,
