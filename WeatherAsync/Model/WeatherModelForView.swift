@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Model using our response model and transforming it to be used in View, logic happens here
 struct WeatherModelForView {
     let city: String
     let weather: String
