@@ -107,7 +107,6 @@ struct ContentView: View {
     var noLocationWarning: some View {
         Button(action: {
             showAlert = true
-            location = ""
         }, label: {
             Text("Error                                          ")
         })
@@ -118,7 +117,9 @@ struct ContentView: View {
         .alert(isPresented: $showAlert, content: {
             return Alert(
                 title: Text("Unavailable location ❌ \n Please enter another one 🙂"),
-                dismissButton: .default(Text("OK")))
+                dismissButton: .default(Text("OK"), action: {
+                    location = ""
+                }))
         })
     }
     
