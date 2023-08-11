@@ -109,8 +109,12 @@ struct ContentView: View {
             showAlert = true
             location = ""
         }, label: {
-            Text("Error")
+            Text("Error                                          ")
         })
+        .padding(.top, 10)
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.capsule)
+        .tint(.purple)
         .alert(isPresented: $showAlert, content: {
             return Alert(
                 title: Text("Unavailable location ❌ \n Please enter another one 🙂"),
