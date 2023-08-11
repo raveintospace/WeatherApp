@@ -22,59 +22,14 @@ struct ContentView: View {
                     Text(viewModel.weatherModelForView.description.capitalizingFirstLetter())
                         .font(.headline)
                         .foregroundColor(.white)
-                        .padding(.bottom, 8)
-                    HStack {
-                        if let url = viewModel.weatherModelForView.iconURL {
-                            AsyncImage(url: url) { image in
-                                image
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            
-                        }
-                        Text(viewModel.weatherModelForView.currentTemperature)
-                            .font(.system(size: 70))
-                            .foregroundColor(.white)
-                    }
-                    .padding(.top, -20)
-                    HStack(spacing: 14) {
-                        Label(viewModel.weatherModelForView.minTemperature, systemImage: "thermometer.snowflake")
-                        Label(viewModel.weatherModelForView.maxTemperature, systemImage: "thermometer.sun.fill")
-                    }
-                    .modifier(CustomModifier())
                     
-                    Divider()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    HStack(spacing: 32) {
-                        VStack {
-                            Image(systemName: "sunrise.fill")
-                                .symbolRenderingMode(.multicolor)
-                            Text(viewModel.weatherModelForView.sunrise, style: .time)
-                        }
-                        
-                        VStack {
-                            Image(systemName: "sunset.fill")
-                                .symbolRenderingMode(.multicolor)
-                            Text(viewModel.weatherModelForView.sunset, style: .time)
-                        }
-                    }
-                    .foregroundColor(.white)
-                    
-                    Divider()
-                        .foregroundColor(.white)
-                        .padding()
-                    VStack {
-                        Label(viewModel.weatherModelForView.humidity, systemImage: "humidity.fill")
-                            .modifier(CustomModifier())
-                        
-                        Divider()
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                        Spacer()
-                    }
+                    imageAndTemperature
+                    minMaxTemperature
+                    customDivider
+                    humidity
+                    customDivider
+                    sunriseAndSunset
+                    Spacer()
                 }
                 .padding(.top, 20)
             }
@@ -87,6 +42,61 @@ struct ContentView: View {
         .searchable(text: $location, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Enter location"))
         .autocorrectionDisabled()
         .onSubmit(of: .search, getWeather)
+    }
+    
+    var imageAndTemperature: some View {
+        HStack {
+            if let url = viewModel.weatherModelForView.iconURL {
+                AsyncImage(url: url) { image in
+                    image
+                } placeholder: {
+                    ProgressView()
+                }
+                
+            }
+            Text(viewModel.weatherModelForView.currentTemperature)
+                .font(.system(size: 70))
+                .foregroundColor(.white)
+        }
+    }
+    
+    var minMaxTemperature: some View {
+        HStack(spacing: 14) {
+            Label(viewModel.weatherModelForView.minTemperature, systemImage: "thermometer.snowflake")
+            Label(viewModel.weatherModelForView.maxTemperature, systemImage: "thermometer.sun.fill")
+        }
+        .modifier(CustomModifier())
+    }
+    
+    var customDivider: some View {
+        Divider()
+            .foregroundColor(.white)
+            .padding()
+    }
+    
+    var humidity: some View {
+        VStack {
+            Label(viewModel.weatherModelForView.humidity, systemImage: "humidity.fill")
+                .modifier(CustomModifier())
+        }
+    }
+    
+    var sunriseAndSunset: some View {
+        HStack(spacing: 32) {
+            VStack {
+                Image(systemName: "sunrise.fill")
+                    .symbolRenderingMode(.multicolor)
+                Text(viewModel.weatherModelForView.sunrise, style: .time)
+            }
+            
+            VStack {
+                Image(systemName: "sunset.fill")
+                    .symbolRenderingMode(.multicolor)
+                Text(viewModel.weatherModelForView.sunset, style: .time)
+            }
+        }
+        .foregroundColor(.white)
+        .padding(.top, 5)
     }
     
     func getWeather() {
