@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = WeatherViewModel()
+    @State private var showAlert = false
     @State private var location = ""
     
     var body: some View {
@@ -37,6 +38,10 @@ struct ContentView: View {
             )
             .task {
                 await viewModel.getWeather(city: "Palafrugell")
+            }
+            
+            if viewModel.noLocationAlert {
+                noLocationWarning
             }
         }
         .searchable(text: $location, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Enter location"))
@@ -97,6 +102,20 @@ struct ContentView: View {
         }
         .foregroundColor(.white)
         .padding(.top, 5)
+    }
+    
+    var noLocationWarning: some View {
+        Button(action: {
+            showAlert = true
+            location = ""
+        }, label: {
+            Text("Error")
+        })
+        .alert(isPresented: $showAlert, content: {
+            return Alert(
+                title: Text("Unavailable location ❌ \n Please enter another one 🙂"),
+                dismissButton: .default(Text("OK")))
+        })
     }
     
     func getWeather() {
