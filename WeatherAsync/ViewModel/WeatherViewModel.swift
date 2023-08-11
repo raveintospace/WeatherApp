@@ -24,14 +24,17 @@ final class WeatherViewModel: ObservableObject {
     func getWeather(city: String) async {
         do {
             let receivedWeather = try await repository.fetchWeather(city: city)
-            self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather)
-            noLocationAlert = false
-            print(noLocationAlert)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather)
+                self.noLocationAlert = false
+            }
         }
         catch {
-            print(error)
-            noLocationAlert = true
-            print(noLocationAlert)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.noLocationAlert = true
+            }
         }
     }
 }
