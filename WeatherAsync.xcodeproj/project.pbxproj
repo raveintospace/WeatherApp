@@ -11,6 +11,7 @@
 		340B0D382A85238100BE4DDD /* WeatherModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */; };
 		340B0D3C2A8531B700BE4DDD /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */; };
 		340EDDA92A851D0E00C21210 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340EDDA82A851D0E00C21210 /* CustomModifier.swift */; };
+		344F52E02A8682AD00BF5CDF /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344F52DF2A8682AD00BF5CDF /* Extension+String.swift */; };
 		3499DEAD2A83E61800116400 /* WeatherAsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3499DEAC2A83E61800116400 /* WeatherAsyncApp.swift */; };
 		3499DEAF2A83E61800116400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3499DEAE2A83E61800116400 /* ContentView.swift */; };
 		3499DEB12A83E61B00116400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3499DEB02A83E61B00116400 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelMapper.swift; sourceTree = "<group>"; };
 		340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		340EDDA82A851D0E00C21210 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
+		344F52DF2A8682AD00BF5CDF /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		3499DEA92A83E61800116400 /* WeatherAsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3499DEAC2A83E61800116400 /* WeatherAsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAsyncApp.swift; sourceTree = "<group>"; };
 		3499DEAE2A83E61800116400 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				340EDDA82A851D0E00C21210 /* CustomModifier.swift */,
 				340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */,
 				340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */,
+				344F52DF2A8682AD00BF5CDF /* Extension+String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				340EDDA92A851D0E00C21210 /* CustomModifier.swift in Sources */,
 				340B0D382A85238100BE4DDD /* WeatherModelMapper.swift in Sources */,
 				3499DEBE2A83EB3800116400 /* WeatherViewModel.swift in Sources */,
+				344F52E02A8682AD00BF5CDF /* Extension+String.swift in Sources */,
 				340B0D362A85220B00BE4DDD /* WeatherModelForView.swift in Sources */,
 				3499DEBB2A83E8B800116400 /* WeatherResponseDataModel.swift in Sources */,
 				3499DEAD2A83E61800116400 /* WeatherAsyncApp.swift in Sources */,

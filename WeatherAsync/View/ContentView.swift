@@ -19,7 +19,7 @@ struct ContentView: View {
                     Text(viewModel.weatherModelForView.city)
                         .foregroundColor(.white)
                         .font(.system(size: 70))
-                    Text(viewModel.weatherModelForView.description)
+                    Text(viewModel.weatherModelForView.description.capitalizingFirstLetter())
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.bottom, 8)
@@ -84,7 +84,7 @@ struct ContentView: View {
                 await viewModel.getWeather(city: "Palafrugell")
             }
         }
-        .searchable(text: $location, placement: .navigationBarDrawer(displayMode: .automatic), prompt: Text("Enter location"))
+        .searchable(text: $location, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Enter location"))
         .autocorrectionDisabled()
         .onSubmit(of: .search, getWeather)
     }
