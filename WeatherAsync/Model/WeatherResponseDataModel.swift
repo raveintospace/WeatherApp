@@ -20,6 +20,8 @@ struct WeatherResponseDataModel: Decodable {
         case temperature = "main"
         case sun = "sys"
     }
+    
+    static let empty: WeatherResponseDataModel = .init(city: "Dummy city", weather: [WeatherDataModel(main: "empty", description: "empty", iconURLString: "empty")], temperature: TemperatureDataModel(currentTemperature: 10, minTemperature: 10, maxTemperature: 10, humidity: 10), sun: SunModel(sunrise: Date.now, sunset: Date.now), timezone: 50)
 }
 
 struct WeatherDataModel: Decodable {
