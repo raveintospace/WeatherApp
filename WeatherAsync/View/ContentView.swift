@@ -20,6 +20,7 @@ struct ContentView: View {
                     Text(viewModel.weatherModelForView.city)
                         .foregroundColor(.white)
                         .font(.system(size: 70))
+                        .multilineTextAlignment(.center)
                     Text(viewModel.weatherModelForView.description.capitalizingFirstLetter())
                         .font(.headline)
                         .foregroundColor(.white)

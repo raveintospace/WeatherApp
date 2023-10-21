@@ -22,7 +22,8 @@ final class WeatherViewModel: ObservableObject {
         self.repository = repository
     }
 
-    @MainActor func getWeather(city: String) async {
+    @MainActor
+    func getWeather(city: String) async {
 //        do {
 //            let receivedWeather = try await repository.fetchWeather(city: city)
 //            DispatchQueue.main.async { [weak self] in
@@ -32,7 +33,7 @@ final class WeatherViewModel: ObservableObject {
 //            }
 //        }
         do {
-            receivedWeather = try await repository.fetch(city: city)
+            receivedWeather = try await repository.fetchWeatherInfo(city: city)
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather ?? WeatherResponseDataModel.empty)

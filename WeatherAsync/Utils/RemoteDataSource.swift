@@ -13,6 +13,8 @@ enum RemoteDataSourceError: Error {
 }
 
 struct RemoteDataSource {
+    
+    // not used with the generic network manager
     func fetchWeather(city: String) async throws -> WeatherResponseDataModel {
         guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=a0f83ddbf9fa0d41abe53f5ea148d5fe&units=metric&lang=es") else { throw RemoteDataSourceError.invalidURL }
         
@@ -26,11 +28,12 @@ struct RemoteDataSource {
         }
     }
     
-    func fetch<T: Decodable>(city: String) async throws -> T {
+    func fetch<T: Decodable>(type: T.Type, url: URL?) async throws -> T {
         
         // check if url exists
-//        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=a0f83ddbf9fa0d41abe53f5ea148d5fe&units=metric&lang=es") else { throw RemoteDataSourceError.invalidURL }
-        guard let url = createURL(city: city) else { throw RemoteDataSourceError.invalidURL }
+        guard let url = url else {
+            throw RemoteDataSourceError.invalidURL
+        }
         
         // obtain data & response from url
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -48,10 +51,20 @@ struct RemoteDataSource {
     func createURL(city: String) -> URL? {
         
         let baseURL = "http://api.openweathermap.org/data/2.5/weather"
-        var queryItems = [URLQueryItem(name: "q", value: city)]
+        let queryItems = [URLQueryItem(name: "q", value: city),
+                          URLQueryItem(name: "appid", value: "a0f83ddbf9fa0d41abe53f5ea148d5fe"),
+                          URLQueryItem(name: "units", value: "metric"),
+                          URLQueryItem(name: "lang", value: "es")]
                           
         var components = URLComponents(string: baseURL)
         components?.queryItems = queryItems
         return components?.url
+    }
+    
+    func fetchWeatherInfo(city: String) async throws -> WeatherResponseDataModel {
+        
+        let url = createURL(city: city)
+        
+        return try await fetch(type: WeatherResponseDataModel.self, url: url)
     }
 }
