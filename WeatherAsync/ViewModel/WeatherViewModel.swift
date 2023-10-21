@@ -10,6 +10,7 @@ import Foundation
 final class WeatherViewModel: ObservableObject {
     @Published var weatherModelForView: WeatherModelForView
     @Published var noLocationAlert: Bool
+    @Published var receivedWeather: WeatherResponseDataModel? = nil
     
     private let weatherModelMapper: WeatherModelMapper = WeatherModelMapper()
     private let repository: RemoteDataSource
@@ -21,12 +22,20 @@ final class WeatherViewModel: ObservableObject {
         self.repository = repository
     }
 
-    func getWeather(city: String) async {
+    @MainActor func getWeather(city: String) async {
+//        do {
+//            let receivedWeather = try await repository.fetchWeather(city: city)
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather)
+//                self.noLocationAlert = false
+//            }
+//        }
         do {
-            let receivedWeather = try await repository.fetchWeather(city: city)
+            receivedWeather = try await repository.fetch(city: city)
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather)
+                self.weatherModelForView = self.weatherModelMapper.mapDataModelToModel(dataModel: receivedWeather ?? WeatherResponseDataModel.empty)
                 self.noLocationAlert = false
             }
         }

@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				340EDDA82A851D0E00C21210 /* CustomModifier.swift */,
-				340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */,
 				340B0D3B2A8531B700BE4DDD /* RemoteDataSource.swift */,
 				344F52DF2A8682AD00BF5CDF /* Extension+String.swift */,
 			);
@@ -118,6 +117,7 @@
 			children = (
 				3499DEBA2A83E8B800116400 /* WeatherResponseDataModel.swift */,
 				340B0D352A85220B00BE4DDD /* WeatherModelForView.swift */,
+				340B0D372A85238100BE4DDD /* WeatherModelMapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
