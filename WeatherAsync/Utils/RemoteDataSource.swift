@@ -52,7 +52,7 @@ struct RemoteDataSource {
         
         let baseURL = "http://api.openweathermap.org/data/2.5/weather"
         let queryItems = [URLQueryItem(name: "q", value: city),
-                          URLQueryItem(name: "appid", value: "a0f83ddbf9fa0d41abe53f5ea148d5fe"),
+                          URLQueryItem(name: "appid", value: /*insert your api key*/),
                           URLQueryItem(name: "units", value: "metric"),
                           URLQueryItem(name: "lang", value: "es")]
                           
