@@ -16,7 +16,7 @@ struct RemoteDataSource {
     
     // not used with the generic network manager
     func fetchWeather(city: String) async throws -> WeatherResponseDataModel {
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=a0f83ddbf9fa0d41abe53f5ea148d5fe&units=metric&lang=es") else { throw RemoteDataSourceError.invalidURL }
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=/*insert your api key*/&units=metric&lang=es") else { throw RemoteDataSourceError.invalidURL }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
